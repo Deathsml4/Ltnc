@@ -13,9 +13,13 @@ long beautifulStrings(string s) {
     int len = s.length();
     long count = 0;
     for (int i = 0 ; i < len ; i++){
-        for (int j = i+1 ; j < len ; j++){
-            if ((i == 0 && j == 1) || (i+1 == j && s[i] == s[j]) || (s[i]!=s[i-1] && s[j]!=s[j-1])){
-                count ++;
+        if (i == 0 || s[i] != s[i-1]){
+            char x = s[i+1];
+            for (int j = i+1 ; j < len ; j++){
+                if (j==i+1 || x != s[j]){
+                    x = s[j];
+                    count ++;
+                }
             }
         }
     }
@@ -36,4 +40,3 @@ int main()
     fout.close();
 
     return 0;
-}
